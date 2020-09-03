@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "296229036127",
+    "firebase_url": "https://flash-chat-2a0e0.firebaseio.com",
+    "project_id": "flash-chat-2a0e0",
+    "storage_bucket": "flash-chat-2a0e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296229036127:android:76619194b68ea0ee0f7bea",
+        "android_client_info": {
+          "package_name": "co.mndthenerd.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296229036127-gsn7tt5qdvuv4f3ojdf5foa52gbn9p7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTacrQBWWeq3tekUeUKWXxE3BZ447B38M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296229036127-gsn7tt5qdvuv4f3ojdf5foa52gbn9p7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
