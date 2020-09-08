@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'registration_screen.dart';
@@ -13,6 +14,10 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
+
+
+
+
   AnimationController controller;
   Animation animation;
   @override
@@ -26,6 +31,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     controller.forward();
     controller.addListener(() {
+      setState(() {});
+    });
+
+    Firebase.initializeApp().whenComplete(() {
+      print("completed");
       setState(() {});
     });
   }
