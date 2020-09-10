@@ -1,7 +1,10 @@
+import 'package:flash_chat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
   @override
@@ -10,25 +13,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
-  User loggedInUser;
-
-  @override
-  void initState() {
-    super.initState();
-    getCurrentUser();
-  }
-
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser;
-      if(user != null){
-        loggedInUser =user;
-        print(loggedInUser.email);
-      }
-    } on Exception catch (e) {
-      print(e);
-    }
-  }
+  String email;
+  String password;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               textAlign: TextAlign.center,
               onChanged: (value) {
                 //Do something with the user input.
+                email = value;
               },
               decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
             ),
@@ -69,13 +56,22 @@ class _LoginScreenState extends State<LoginScreen> {
               textAlign: TextAlign.center,
               onChanged: (value) {
                 //Do something with the user input.
+                password = value;
               },
               decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password.'),
             ),
             SizedBox(
               height: 24.0,
             ),
-            RoundedButton(title: 'Log In', color: Colors.lightBlueAccent, onPressed: (){
+            RoundedButton(title: 'Log In', color: Colors.lightBlueAccent, onPressed: () async{
+              try {
+                final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                if(user != null){
+                  Navigator.pushNamed(context, ChatScreen.id);
+                }
+              } on Exception catch (e) {
+                print(e);
+              }
             },),
           ],
         ),
